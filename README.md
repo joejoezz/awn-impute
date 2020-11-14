@@ -12,7 +12,7 @@ Creates a new continuous data product by filling in missing and flagged data wit
 - AWNPy: My module that interacts with the AWN API https://github.com/joejoezz/AWNPy/
 
 ### Modules
-- clean: brings database up to date with the AgWeatherNet API, which is necessary because stations are decprecated from time to time.
+- clean: brings database up to date with the AgWeatherNet API, which is necessary because stations are deprecated from time to time.
 - download_obs: download obs beginning at the `start_time` specified in config file up to the most recent 15-min observation.
 - train: train random forest model. Only needs to be done once. Estimators are only trained on sites with at least one year of data.
 - predict: create the imputed database by making predictions with the estimators. 
