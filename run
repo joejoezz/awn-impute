@@ -1,0 +1,39 @@
+"""
+Run the AWN imputer
+"""
+
+import os
+import sys
+import engine
+import numpy as np
+from argparse import ArgumentParser
+from datetime import datetime, timedelta
+import util
+import pickle
+import pdb
+
+# Suppress warnings
+#import warnings
+#warnings.filterwarnings("ignore")
+
+def get_command_options():
+    parser = ArgumentParser()
+    parser.add_argument("config", help="Path to config file")
+    parser.add_argument("-clean", "--clean", action="store_true", dest="clean",
+                        help="Clean data based on latest metadata list")
+    parser.add_argument("-download", "--download", action="store_true", dest="download",
+                        help="Download new data -- always need to do this")
+    parser.add_argument("-train", "--train", action="store_true", dest="train",
+                        help="Train the estimator -- takes forever, only do occasionally")
+    parser.add_argument("-predict", "--predict", action="store_true", dest="predict",
+                        help="Make predictions (up to what is downloaded already)")
+    parser.add_argument("-qaqc", "--qaqc", action="store_true", dest="qaqc",
+                        help="Run QAQC checks (uses predictions)")
+    parser.add_argument("-plot", "--plot", action="store_true", dest="plot",
+                        help="Make plots (uses QAQC data)")
+    arguments = parser.parse_args()
+    return arguments
+
+# Figure out the date
+arguments = get_command_options()
+engine.main(arguments)
