@@ -9,7 +9,7 @@ Creates a new continuous data product by filling in missing and flagged data wit
 ### Core functions
 - pandas  
 - scikit-learn
-- AWNPy (my module that interacts with the AWN API)
+- AWNPy: My module that interacts with the AWN API https://github.com/joejoezz/AWNPy/
 
 ## Running the program
 - Modify the config file
