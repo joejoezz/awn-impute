@@ -34,6 +34,6 @@ def get_command_options():
     arguments = parser.parse_args()
     return arguments
 
-# Figure out the date
+# Pass these arguments to the engine
 arguments = get_command_options()
 engine.main(arguments)
