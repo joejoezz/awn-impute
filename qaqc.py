@@ -100,4 +100,4 @@ def main(config):
         df_qaqc.to_csv('{}/qaqc_{}.csv'.format(qaqc_dir, stid))
         print('saved {}'.format(stid))
 
-    pdb.set_trace()
+    return

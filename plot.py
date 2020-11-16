@@ -87,4 +87,4 @@ def main(config):
         plot_one_station(df_qaqc, stid, vars, flag_thresholds, now, plot_dir)
         print('saved  plot {}'.format(stid))
 
-    pdb.set_trace()
+    return

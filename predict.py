@@ -140,4 +140,4 @@ def main(config):
         df.to_pickle(predict_file)
         print('saved {}'.format(stid))
 
-    pdb.set_trace()
+    return

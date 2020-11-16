@@ -107,3 +107,5 @@ def main(config):
             print('saved {}'.format(stid))
         df.to_pickle(obs_file)
 
+    return
+
