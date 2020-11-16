@@ -1,6 +1,6 @@
 """
 Script to run the AWN imputer
-Standard procedure on a crontab would be: 'python run config.conf --download_obs --predict --qaqc --plot'
+Standard procedure on a crontab would be: 'python run config.conf --download --predict --qaqc --plot'
 Occasionally 'train' should be run to update the models but needs to be used sparingly.
 
 To-do:
@@ -18,7 +18,7 @@ import pdb
 import util
 from argparse import ArgumentParser
 import clean
-import download_obs
+import download
 import train
 import predict
 import qaqc
@@ -34,10 +34,24 @@ def main(args):
     config = util.get_config(args.config)
     root_dir = config['ROOT_DIR']
     # fill out initial folders
-    if not os.path.isdir('{}/metadata2'.format(root_dir)):
-        os.mkdir('{}/metadata2'.format(root_dir))
-
-    pdb.set_trace()
+    if not os.path.isdir('{}/metadata'.format(root_dir)):
+        os.mkdir('{}/metadata'.format(root_dir))
+        print('created metadata dir')
+    if not os.path.isdir('{}'.format(config['OBS_ROOT'])):
+        os.mkdir('{}'.format(config['OBS_ROOT']))
+        print('created OBS dir')
+    if not os.path.isdir('{}'.format(config['ESTIMATORS_ROOT'])):
+        os.mkdir('{}'.format(config['ESTIMATORS_ROOT']))
+        print('created ESTIMATORS dir')
+    if not os.path.isdir('{}'.format(config['PREDICTIONS_ROOT'])):
+        os.mkdir('{}'.format(config['PREDICTIONS_ROOT']))
+        print('created PREDICTIONS dir')
+    if not os.path.isdir('{}'.format(config['QAQC_ROOT'])):
+        os.mkdir('{}'.format(config['QAQC_ROOT']))
+        print('created QAQC dir')
+    if not os.path.isdir('{}'.format(config['PLOT_ROOT'])):
+        os.mkdir('{}'.format(config['PLOT_ROOT']))
+        print('created PLOT dir')
 
     # --- download data ---
     if args.clean:
@@ -46,7 +60,7 @@ def main(args):
         print('skipping database cleaning')
     # --- download data ---
     if args.download:
-        download_obs.main(config)
+        download.main(config)
     else:
         print('skipping download of new data')
     # --- train models

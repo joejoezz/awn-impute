@@ -11,14 +11,12 @@ from datetime import datetime, timedelta
 import os
 from joblib import load
 from sklearn.impute import SimpleImputer
-import download_obs
 from util import extract_stids
 
 
 def predict_one_station(df_obs, feature_columns, est_dir, stid, vars, start_time, end_time):
     """
     make predictions for one station
-    UPDATE NEEDED--first pass at imputing with means, then try a second time...
     :param df_obs: dataframe of all obs
     :param feature_columns: features used for this estimator
     :param est_dir: directory of the estimator
